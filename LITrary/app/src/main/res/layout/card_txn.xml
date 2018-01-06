@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="6dp"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="6dp"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        android:background="@color/white"
+        app:cardElevation="@dimen/cardview_default_elevation"
+        app:cardUseCompatPadding="true"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="110dp"
+                android:layout_height="170dp"
+                android:src="@drawable/book"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:layout_marginTop="-4dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="36dp"
+                    android:textStyle="bold"
+                    android:text="Scarlet"
+                    />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:text="Transaction Complete"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/holo_green_light"
+                    />
+                <TextView
+                    android:id="@+id/days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20dp"
+                    android:text="10 Days Remaining"
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+                </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
