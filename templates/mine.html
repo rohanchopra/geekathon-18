@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>Literary</title>
+	</head>
+	<body>
+		<h2> Index: {{ block['index'] }} </h2>
+		<h3> Timestamp:{{ block['timestamp'] }} </h3>
+		<h3> Transactions: </h3>
+		<h4> To: {{ block['data']['transactions'][0]['to']}} </h4>
+		<h4> From: {{ block['data']['transactions'][0]['from']}} </h4>
+		<h4> Amount: {{ block['data']['transactions'][0]['amount']}} </h4>
+		<h3> Proof of work: {{ block['data']['proof-of-work'] }} </h3>
+		<h3> Hash: {{ block['hash'] }} </h3>
+	</body>
+</html>

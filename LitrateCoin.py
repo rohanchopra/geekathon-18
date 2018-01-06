@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask import request
 import json
 import requests
@@ -60,6 +60,12 @@ def transaction():
   print "AMOUNT: {}\n".format(new_txion['amount'])
   # Then we let the client know it worked out
   return "Transaction submission successful\n"
+
+@node.route('/req', methods=['POST'])
+def pp():
+    aa = request.get_json()
+    print(aa)
+    return 'aaaa'
 
 @node.route('/blocks', methods=['GET'])
 def get_blocks():
@@ -160,11 +166,17 @@ def mine():
   )
   blockchain.append(mined_block)
   # Let the client know we mined a block
-  return json.dumps({
-      "index": new_block_index,
-      "timestamp": str(new_block_timestamp),
-      "data": new_block_data,
-      "hash": last_block_hash
-  }) + "\n"
+  
+  block = {"index": new_block_index, "timestamp": str(new_block_timestamp), "data": new_block_data, "hash": last_block_hash}
 
-node.run(host='0.0.0.0')
+  return render_template('mine.html', block=block)
+  
+
+@node.route('/gui', methods = ['GET'])
+def gui():
+    return None
+
+#node.run(host='0.0.0.0')
+if __name__ == '__main__':
+    node.run(debug=True)
+
