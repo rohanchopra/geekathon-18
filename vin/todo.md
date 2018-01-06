@@ -3,5 +3,5 @@
 - [ ] Presentation
 - [ ] Business Plan
 - [ ] Logo
-- [ ] App Flow
+- [x] App Flow
 - [ ] Backend -> Node/Flask
