@@ -1,0 +1,28 @@
+<html>
+<meta http-equiv="refresh" content="5">
+<style>
+html { max-width: 60%; 
+	margin: 0 auto;
+	background: #ffc000;
+}
+
+div {
+	background: white;
+    padding: 20px;
+	border-radius: 20px;
+	margin-top: 25px;
+}
+
+</style>
+<body>
+	{% for block in chain %}
+		<div>
+		<h2> Block Height: {{ block['index'] }} </h2>
+		<h3> Timestamp:{{ block['timestamp'] }} </h3>
+		<h3> Previous Hash: {{ block['hash'] }} </h3>
+		<br><br>
+		<code> {{ block['data'] }} </code>
+		</div>
+	{% endfor %}
+</body>
+</html>
