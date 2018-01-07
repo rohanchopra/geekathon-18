@@ -44,7 +44,16 @@ public class BooksViewHolder extends RecyclerView.ViewHolder implements View.OnC
     @Override
     public void onClick(View view) {
 
-        context.startActivity(new Intent(context, DetailActivity.class));
+        int pos = getLayoutPosition();
+        Intent intent = new Intent(context,DetailActivity.class);
+        intent.putExtra("name",items.get(pos).getTitle());
+        intent.putExtra("author",items.get(pos).getAuthor());
+        intent.putExtra("credits",items.get(pos).getCredits());
+        intent.putExtra("rating",items.get(pos).getRating());
+        intent.putExtra("isbn",items.get(pos).getIsbn());
+        intent.putExtra("url",items.get(pos).getImgurl());
+        intent.putExtra("desc",items.get(pos).getDesc());
 
+        context.startActivity(intent);
     }
 }

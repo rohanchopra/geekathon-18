@@ -13,14 +13,18 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
             android:name=".SplashActivity"
-            android:noHistory="true">
+            android:noHistory="true"
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity android:name=".DetailActivity" />
         <activity android:name=".ProfileActivity"/>
         <activity android:name=".TransactionActivity"/>

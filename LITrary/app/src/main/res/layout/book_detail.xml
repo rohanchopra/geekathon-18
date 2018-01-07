@@ -36,6 +36,7 @@
                 android:layout_weight="1">
 
                 <ImageView
+                    android:id="@+id/cover"
                     android:layout_width="120dp"
                     android:layout_height="190dp"
                     android:layout_marginTop="16dp"
@@ -55,6 +56,7 @@
                 >
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_marginTop="16dp"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
@@ -63,6 +65,7 @@
                     android:textSize="26dp"
                     android:text="Scarlet"/>
                 <TextView
+                    android:id="@+id/author"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_height="wrap_content"
@@ -74,6 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/credits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -89,6 +93,7 @@
 
                         />
                 <TextView
+                    android:id="@+id/rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
@@ -110,9 +115,12 @@
                         card_view:cardCornerRadius="5dp"
                         >
                     <android.support.v7.widget.AppCompatButton
-                    android:layout_width="wrap_content"
+                    android:id="@+id/borrow_button"
+
+                        android:layout_width="wrap_content"
                     android:layout_height="52dp"
                         android:background="@color/colorAccent"
+
 
                     android:text="Borrow"/>
                     </android.support.v7.widget.CardView>
@@ -144,6 +152,7 @@
             android:layout_height="wrap_content"
             android:background="@color/gray">
         <TextView
+            android:id="@+id/desc"
             android:padding="32dp"
             android:layout_width="match_parent"
             android:layout_height="500dp"

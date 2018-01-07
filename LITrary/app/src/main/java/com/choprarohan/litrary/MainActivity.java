@@ -5,7 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatImageButton;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
@@ -14,8 +18,17 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,41 +73,60 @@ public class MainActivity extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.navigation_home);
     }
 
+    @BindView(R.id.button_add)
+    AppCompatImageButton addButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ButterKnife.bind(this);
 
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
-        Books b = new Books();
-        b.setImgLink("https://the-digital-reader.com/wp-content/uploads/2017/11/35.png");
-        items.add(b);
-        b = new Books();
-        b.setImgLink("https://upload.wikimedia.org/wikipedia/en/a/a7/The_Whistler_book_cover.png");
-        items.add(b);
-        b = new Books();
-        b.setImgLink("http://78.media.tumblr.com/61b3cf732767b2ce259184ee829c7d96/tumblr_ob72x0hCBD1qfv89lo1_r2_500.png");
-        items.add(b);
-        b = new Books();
-        b.setImgLink("http://78.media.tumblr.com/9c89cdedf6317aa67b3a3f04a3589a03/tumblr_inline_p03epxt2Ij1qcipmn_540.png");
-        items.add(b);
-        b = new Books();
-        b.setImgLink("https://upload.wikimedia.org/wikipedia/en/2/20/Scarlet_%28Official_Book_Cover%29_by_Marissa_Meyer.png");
-        items.add(b);
+
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.bookList);
+
+        items = new ArrayList<>();
+
+        DatabaseReference dbBooks = FirebaseDatabase.getInstance().getReference("books");
+
+
+        Query query = dbBooks.orderByChild("rating");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                items.clear();
+
+                for(DataSnapshot bookSnapshot: dataSnapshot.getChildren()){
+                    Books book = bookSnapshot.getValue(Books.class);
+
+
+
+                    items.add(book);
+                }
+
+
+                // set up the RecyclerView
+                int numberOfColumns = 3;
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, numberOfColumns));
+                adapter = new BooksAdapter(items);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 
 
-        // set up the RecyclerView
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.bookList);
-        int numberOfColumns = 3;
-        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-        adapter = new BooksAdapter(items);
-        recyclerView.setAdapter(adapter);
+
 
 
     }

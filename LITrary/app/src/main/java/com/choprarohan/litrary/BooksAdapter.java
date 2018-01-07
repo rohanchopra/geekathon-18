@@ -63,7 +63,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksViewHolder> {
                     .diskCacheStrategy(DiskCacheStrategy.ALL);
 
             Glide.with(viewHolder.getBookImage().getContext())
-                    .load(items.get(position).getImgLink())
+                    .load(items.get(position).getImgurl())
                     .apply(options)
                     .into(viewHolder.getBookImage());
             //viewHolder.getBookImage().setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);

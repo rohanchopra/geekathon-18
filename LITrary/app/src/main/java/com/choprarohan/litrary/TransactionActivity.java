@@ -68,19 +68,17 @@ public class TransactionActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Transaction b = new Transaction();
-        b.setImgLink("https://the-digital-reader.com/wp-content/uploads/2017/11/35.png");
+        b.setTitle("Angels and Demons");
+        b.setDays("0");
+        b.setFlag(1);
+        b.setImgLink("http://images.amazon.com/images/P/074349346X.01.LZZZZZZZ.jpg");
         items.add(b);
+
         b = new Transaction();
-        b.setImgLink("https://upload.wikimedia.org/wikipedia/en/a/a7/The_Whistler_book_cover.png");
-        items.add(b);
-        b = new Transaction();
-        b.setImgLink("http://78.media.tumblr.com/61b3cf732767b2ce259184ee829c7d96/tumblr_ob72x0hCBD1qfv89lo1_r2_500.png");
-        items.add(b);
-        b = new Transaction();
-        b.setImgLink("http://78.media.tumblr.com/9c89cdedf6317aa67b3a3f04a3589a03/tumblr_inline_p03epxt2Ij1qcipmn_540.png");
-        items.add(b);
-        b = new Transaction();
-        b.setImgLink("https://upload.wikimedia.org/wikipedia/en/2/20/Scarlet_%28Official_Book_Cover%29_by_Marissa_Meyer.png");
+        b.setTitle("The Da Vinci Code");
+        b.setDays("14");
+        b.setFlag(0);
+        b.setImgLink("http://images.amazon.com/images/P/0385504217.01.LZZZZZZZ.jpg");
         items.add(b);
 
 

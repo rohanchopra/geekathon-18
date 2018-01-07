@@ -72,6 +72,19 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionViewHold
             e.printStackTrace();
         }
 
+        viewHolder.getNameText().setText(items.get(position).getTitle());
+        viewHolder.getDaysText().setText(items.get(position).getDays());
+        if(items.get(position).getFlag() == 1){
+            viewHolder.getStatusText().setText("Transaction Complete");
+            viewHolder.getDaysText().setVisibility(View.GONE);
+            viewHolder.getStatusText().setTextColor(context.getResources().getColor(R.color.green));
+        }
+        else {
+            viewHolder.getDaysText().setVisibility(View.VISIBLE);
+            viewHolder.getStatusText().setText("Transaction Pending");
+            viewHolder.getStatusText().setTextColor(context.getResources().getColor(R.color.orange));
+        }
+
 
     }
 
